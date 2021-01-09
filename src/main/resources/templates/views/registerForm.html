@@ -31,7 +31,7 @@
                 <form th:action="@{/register}" th:object="${member}" method="post">
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" placeholder="Nazwa użytkownika" id="userName" th:field="*{userName}" required pattern="[A-Za-Z0-9_]{3}">
+                            <input type="text" class="form-control" placeholder="Nazwa użytkownika" id="userName" th:field="*{userName}" required pattern="[A-Za-Z0-9_]{3,20}">
                         </div>
                     </div>
                     <div class="row">

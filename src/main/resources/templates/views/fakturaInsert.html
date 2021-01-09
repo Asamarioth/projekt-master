@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dodawanie faktur</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="container" >
+            <div class="simple-login-container  col-md-4 offset-md-4">
+                <h2>Dodaj faktura</h2>
+                <form th:action="@{/faktura_insert}" th:object="${faktura}" method="post">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Nr faktury:
+                            <input type="text" class="form-control" placeholder="Numer Faktury" id="name" th:field="*{nrFaktury}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Ilość paliwa w m^3:
+                            <input type="number"  id="abonament" class="form-control" th:field="*{iloscPaliwa}" required min="1" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Należność:
+                            <input type="number"   id="abonament2" class="form-control" th:field="*{naleznosc}" required min="1" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Data wystawienia:
+                            <input type="date"   id="ulica" class="form-control" th:field="*{dataWystawienia}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Termin Płatności:
+                             <input type="date"   id="ulica" class="form-control" th:field="*{terminPlatnosci}" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+							Klient:
+							<select th:field"*{klient}" required id="rejon" name="klient">
+							<th:block th:each="kli :${klienci}">
+								<option th:text="${kli.nazwaKlienta}" th:value="${kli.idKlienta}"></option>
+								</th:block> 
+							</select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+							Pracownik:
+							<select  th:field"*{pracownik}" id="grupaTaryfowa" name="pracownik">
+							<th:block th:each="pra :${pracownicy}">
+								<option th:text="${pra.imie + ' ' + pra.nazwisko}" th:value="${pra.idPracownika}"></option>
+								</th:block> 
+							</select>
+                        </div>
+                    </div>
+								
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
