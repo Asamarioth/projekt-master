@@ -25,7 +25,7 @@ public class GrupaTaryfowaController {
     @PostMapping("/grupaTaryfowa_insert")
     public String insertGrupaTaryfowa(Model model, @Valid @ModelAttribute("grupaTaryfowa") GrupaTaryfowa grupaTaryfowa) {
         grupaTaryfowaRepository.save(grupaTaryfowa);
-        return "index";
+        return "redirect:/";
     }
 
 }

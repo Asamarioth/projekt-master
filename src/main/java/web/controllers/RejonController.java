@@ -25,7 +25,7 @@ public class RejonController {
     @PostMapping("/rejon_insert")
     public String insertRejon(Model model, @Valid @ModelAttribute("rejon") Rejon rejon) {
         rejonRepository.save(rejon);
-        return "index";
+        return "redirect:/";
     }
 
 }

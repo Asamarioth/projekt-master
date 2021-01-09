@@ -25,7 +25,7 @@ public class PracownikController {
     @PostMapping("/pracownik_insert")
     public String insertPracownik(Model model, @Valid @ModelAttribute("pracownik") Pracownik pracownik) {
         pracownikRepository.save(pracownik);
-        return "index";
+        return "redirect:/";
     }
 
 }

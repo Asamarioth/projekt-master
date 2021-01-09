@@ -35,7 +35,7 @@ public class Klient implements Serializable {
     private String nrIdentyfikacyjny;
 
     @NotEmpty
-    private int nrKonta;
+    private String nrKonta;
 
     @NotEmpty
     private String ulica;

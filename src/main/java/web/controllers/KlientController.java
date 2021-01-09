@@ -37,22 +37,7 @@ public class KlientController {
     @PostMapping("/klient_insert")
     public String insertKlient(Model model, @Valid @ModelAttribute("klient") Klient klient) {
         klientRepository.save(klient);
-
-//        Klient klient = klientT.extractKlient();
-//
-//        GrupaTaryfowa tempGrupa = grupaTaryfowaRepository.findById(Integer.parseInt(klientT.getIdGrupyTaryfowej())).get();
-//
-//        klient.setGrupaTaryfowa(tempGrupa);
-//
-//        System.out.println("Id=" + klientT.getIdGrupyTaryfowej());
-//        System.out.println("Find Grupa");
-//
-//        Rejon tempRejon = rejonRepository.findById(Integer.parseInt(klientT.getIdRejonu())).get();
-//        klient.setRejon(tempRejon);
-//        System.out.println("Find rejon");
-//
-//        klientRepository.save(klient);
-        return "index";
+        return "redirect:/";
     }
 
 }
