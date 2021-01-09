@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dodawanie pracownika</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="container" >
+            <div class="simple-login-container  col-md-4 offset-md-4">
+                <h2>Dodaj pracownika</h2>
+                <form th:action="@{/rejon_insert}" th:object="${rejon}" method="post">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Nazwa rejonu:
+                            <input type="text" class="form-control" placeholder="Nazwa rejonu" id="name" th:field="*{nazwaRejonu}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Abonament:
+                            <input type="number" placeholder=Abonament  id="abonament" class="form-control" th:field="*{abonament}" required min="1" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Opłata Sieciowa Stała:
+                            <input type="number" placeholder="Opłata Sieciowa Stała"  id="oSS" class="form-control" th:field="*{oplataSieciowaStala}" required min="1" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Opłata Sieciowa Zmienna:
+                            <input type="number" placeholder="Opłata Sieciowa Zmienna"  id="oSZ" class="form-control" th:field="*{oplataSieciowaZmienna}" required min="1" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

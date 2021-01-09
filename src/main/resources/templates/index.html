@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{shared/main_layout}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gazownictwo</title>
+</head>
+<body>
+<div layout:fragment="content" class="container" >
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>Strona główna</h1>
+            <p class="lead">Strona główna aplikacji</p>
+            <a sec:authorize="!isAuthenticated()" class="btn btn-lg btn-primary" href="/register" role="button">Rejestracja &raquo;</a>
+            <a sec:authorize="!isAuthenticated()" class="btn btn-lg btn-primary" href="/login" role="button">Logowanie &raquo;</a>
+            <a sec:authorize="isAuthenticated()" class="btn btn-lg btn-primary" href="/logout" role="button">Wyloguj &raquo;</a>
+        </div>
+    </main>
+</div>
+</body>
+</html>

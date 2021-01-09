@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dodawanie grup taryfowych</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="container" >
+            <div class="simple-login-container  col-md-4 offset-md-4">
+                <h2>Dodaj pracownika</h2>
+                <form th:action="@{/grupaTaryfowa_insert}" th:object="${grupaTaryfowa}" method="post">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Nazwa grupy taryfowej:
+                            <input type="text" class="form-control" placeholder="Nazwa grupy taryfowej" id="name" th:field="*{nazwaGrupyTaryfowej}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Stawka Taryfowa:
+                            <input type="number" id="stawkaTaryfowa" class="form-control" th:field="*{stawkaTaryfowa}" required min="1" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Rejestracja</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="container" >
+            <div class="simple-login-container  col-md-4 offset-md-4">
+                <!--Warning Banner is Started-->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="alert alert-info alert-labeled" th:if="${exist}">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                            </button>
+                            <div class="alert-labeled-row">
+                                <span class="alert-label alert-label-left alert-labelled-cell">
+                                    <i class="glyphicon glyphicon-info-sign"></i>
+                                </span>
+                                <p class="alert-body alert-body-right alert-labelled-cell">
+                                    Użytkownik o takiej nazwie już istnieje
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Warning Banner is Closed-->
+                <h2>Rejestracja</h2>
+                <form th:action="@{/register}" th:object="${member}" method="post">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" placeholder="Nazwa użytkownika" id="userName" th:field="*{userName}" required pattern="[A-Za-Z0-9_]{3}">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="password" placeholder="Hasło"  id="password" class="form-control" th:field="*{password}" required minlength="3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dodawanie klienta</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="container" >
+            <div class="simple-login-container  col-md-4 offset-md-4">
+                <h2>Dodaj klienta</h2>
+                <form th:action="@{/klient_insert}" th:object="${klientT}" method="post">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Nazwa klienta:
+                            <input type="text" class="form-control" placeholder="Nazwa Klienta" id="name" th:field="*{nazwaKlienta}" required pattern ="[A-Za-z0-9-. ]{3,30}">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Numer identyfikacyjny:
+                            <input type="text" placeholder="np. A0000001"  id="nr_id" class="form-control" th:field="*{nrIdentyfikacyjny}" required pattern ="[A-Z]{1}[0-9]{7}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Numer konta:
+                            <input type="text" placeholder="Numer konta"  id="nr_konta" class="form-control" th:field="*{nrKonta}" required pattern ="[0-9]{26}" maxlength="26">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Ulica:
+                            <input type="text" placeholder="Ulica"  id="ulica" class="form-control" th:field="*{ulica}" required pattern ="[A-Za-z0-9.- ]{3,50}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Numer domu:
+                            <input type="text" placeholder="Numer domu"  id="nr_domu" class="form-control" th:field="*{nrDomu}" required pattern ="[0-9]{3}[A-Za-z]{0,1}[/]{0,1}[0-9]{0,3}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Kod Pocztowy:
+                            <input type="text" placeholder="00-000"  id="kod_pocztowy" class="form-control" th:field="*{kodPocztowy}" required pattern ="[0-9]{2}[-]{1}[0-9]{3}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Miejscowość:
+                            <input type="text" placeholder="Miejscowść"  id="miejscowosc" class="form-control" th:field="*{miejscowosc}" required pattern ="[A-Za-z]{3,30}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+							Rejon:
+							<select th:field"*{klientT.idRejonu}" required id="rejon">
+							<th:block th:each="rej :${rejony}">
+								<option th:text="${rej.nazwaRejonu}" th:value="${rej.idRejonu}"></option>
+								</th:block> 
+							</select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+							Grupa Taryfowa:
+							<select  th:field"*{klientT.idGrupyTaryfowej}" id="grupaTaryfowa">
+							<th:block th:each="tar :${taryfy}">
+								<option th:text="${tar.nazwaGrupyTaryfowej}" th:value="${tar.idGrupyTaryfowej}"></option>
+								</th:block> 
+							</select>
+                        </div>
+                    </div>
+					
+					
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
