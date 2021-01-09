@@ -10,7 +10,7 @@
         <div layout:fragment="content" class="container" >
             <div class="simple-login-container  col-md-4 offset-md-4">
                 <h2>Dodaj klienta</h2>
-                <form th:action="@{/klient_insert}" th:object="${klientT}" method="post">
+                <form th:action="@{/klient_insert}" th:object="${klient}" method="post">
                     <div class="row">
                         <div class="col-md-12 form-group">
                             Nazwa klienta:
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
 							Rejon:
-							<select th:field"*{klientT.idRejonu}" required id="rejon">
+							<select th:field"*{rejon}" required id="rejon" name="rejon">
 							<th:block th:each="rej :${rejony}">
 								<option th:text="${rej.nazwaRejonu}" th:value="${rej.idRejonu}"></option>
 								</th:block> 
@@ -69,7 +69,7 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
 							Grupa Taryfowa:
-							<select  th:field"*{klientT.idGrupyTaryfowej}" id="grupaTaryfowa">
+							<select  th:field"*{grupaTaryfowa}" id="grupaTaryfowa" name="grupaTaryfowa">
 							<th:block th:each="tar :${taryfy}">
 								<option th:text="${tar.nazwaGrupyTaryfowej}" th:value="${tar.idGrupyTaryfowej}"></option>
 								</th:block> 
