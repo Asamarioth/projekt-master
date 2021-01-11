@@ -41,4 +41,26 @@ public class FakturaController {
         return "redirect:/";
     }
 
+    @GetMapping("/faktury_print")
+    public String printFaktura(Model model) {
+        model.addAttribute("faktury", fakturaRepository.findAll());
+        return "views/fakturaPrint";
+    }
+
+    @GetMapping("faktura_modify")
+    public String modifyFaktura(Model model, int id) {
+        model.addAttribute("faktura", fakturaRepository.getOne(id));
+        model.addAttribute("klienci", klientRepository.findAll());
+        model.addAttribute("pracownicy", pracownikRepository.findAll());
+        return "views/fakturaModify";
+    }
+
+    @PostMapping("faktura_modify")
+    public String modifyfaktura(Model model, @Valid @ModelAttribute("faktura") Faktura faktura) {
+        fakturaRepository.save(faktura);
+
+        return "redirect:/";
+
+    }
+
 }

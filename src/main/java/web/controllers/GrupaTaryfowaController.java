@@ -19,13 +19,34 @@ public class GrupaTaryfowaController {
 
     @GetMapping("/grupaTaryfowa_insert")
     public String insertGrupaTaryfowa(Model model) {
-        model.addAttribute(new GrupaTaryfowa()); 
+        model.addAttribute(new GrupaTaryfowa());
         return "views/grupaTaryfowaInsert";
     }
+
     @PostMapping("/grupaTaryfowa_insert")
     public String insertGrupaTaryfowa(Model model, @Valid @ModelAttribute("grupaTaryfowa") GrupaTaryfowa grupaTaryfowa) {
         grupaTaryfowaRepository.save(grupaTaryfowa);
         return "redirect:/";
+    }
+
+    @GetMapping("grupyTaryfowe_print")
+    public String printGrupyTaryfowe(Model model) {
+        model.addAttribute("taryfy", grupaTaryfowaRepository.findAll());
+        return "views/grupaTaryfowaPrint";
+    }
+
+    @GetMapping("grupaTaryfowa_modify")
+    public String modifyGrupaTaryfowa(Model model, int id) {
+        model.addAttribute("grupaTaryfowa", grupaTaryfowaRepository.getOne(id));
+        return "views/grupaTaryfowaModify";
+    }
+
+    @PostMapping("grupaTaryfowa_modify")
+    public String modifyGrupaTaryfowa(Model model, @Valid @ModelAttribute("grupaTaryfowa") GrupaTaryfowa grupaTaryfowa) {
+        grupaTaryfowaRepository.save(grupaTaryfowa);
+
+        return "redirect:/";
+
     }
 
 }

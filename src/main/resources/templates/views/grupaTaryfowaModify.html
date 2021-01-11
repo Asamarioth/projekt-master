@@ -9,8 +9,9 @@
     <body>
         <div layout:fragment="content" class="container" >
             <div class="simple-login-container  col-md-4 offset-md-4">
-                <h2>Dodaj grupę taryfową</h2>
-                <form th:action="@{/grupaTaryfowa_insert}" th:object="${grupaTaryfowa}" method="post">
+                <h2>Modyfikuj grupę taryfową</h2>
+                <form th:action="@{/grupaTaryfowa_modify}" th:object="${grupaTaryfowa}" method="post">
+                    <input type="hidden" th:field="*{idGrupyTaryfowej}" />
                     <div class="row">
                         <div class="col-md-12 form-group">
                             Nazwa grupy taryfowej:

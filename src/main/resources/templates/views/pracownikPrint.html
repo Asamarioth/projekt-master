@@ -1,0 +1,30 @@
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <title>Lista pracowników</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <div layout:fragment="content" class="container" >
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="pra :${pracownicy}">
+                <tr>
+                    <th scope="row" th:text="${pra.idPracownika}"></th>
+                    <td th:text="${pra.imie}"></td>
+                    <td th:text="${pra.nazwisko}"></td>
+                </tr>
+                </th:block>
+            </tbody>
+        </table>
+         </div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <title>Lista pracowników</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <div layout:fragment="content" class="container" >
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Numer faktury</th>
+                    <th scope="col">Ilość paliwa</th>
+                    <th scope="col">Należność</th>
+                    <th scope="col">Data wystawienia</th>
+                    <th scope="col">Termin płatności</th>
+                    <th scope="col">Czy Zapłacone</th>
+                    <th scope="col">Data płatności</th>
+                    <th scope="col">Klient</th>
+                    <th scope="col">Pracownik</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="fak :${faktury}">
+                <tr>
+                    <th scope="row" ><a th:href="@{/faktura_modify(id=${fak.idFaktury})}" th:text="${fak.nrFaktury}" class="text-decoration-none text-dark"></a></th>
+                    <td th:text="${fak.iloscPaliwa}"></td>
+                    <td th:text="${fak.naleznosc}"></td>
+                    <td th:text="${fak.dataWystawienia}"></td>
+                    <td th:text="${fak.terminPlatnosci}"></td>
+                    <td th:text="${fak.czyZaplacone}"></td>
+                    <td th:text="${fak.dataPlatnosci}"></td>
+                    <td th:text="${fak.klient.nazwaKlienta}"></td>
+                    <td th:text="${fak.pracownik.imie + ' ' + fak.pracownik.nazwisko}"></td>
+                </tr>
+                </th:block>
+            </tbody>
+        </table>
+         </div>
+    </body>
+</html>

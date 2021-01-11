@@ -12,7 +12,6 @@ import web.repositories.KlientRepository;
 import web.repositories.GrupaTaryfowaRepository;
 import web.repositories.RejonRepository;
 import web.entities.Klient;
-import web.transdata.KlientTransData;
 import web.entities.Rejon;
 import web.entities.GrupaTaryfowa;
 
@@ -39,5 +38,12 @@ public class KlientController {
         klientRepository.save(klient);
         return "redirect:/";
     }
+
+    @GetMapping("/klienci_print")
+    public String printKlient(Model model) {
+        model.addAttribute("klienci", klientRepository.findAll());
+        return "views/klientPrint";
+    }
+
 
 }

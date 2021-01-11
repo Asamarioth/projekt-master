@@ -27,5 +27,11 @@ public class PracownikController {
         pracownikRepository.save(pracownik);
         return "redirect:/";
     }
+    
+    @GetMapping("pracownicy_print")
+    public String printPracownik(Model model) {
+        model.addAttribute("pracownicy", pracownikRepository.findAll());
+        return "views/pracownikPrint";
+    }
 
 }

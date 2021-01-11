@@ -1,0 +1,36 @@
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      layout:decorate="~{shared/main_layout}">
+    <head>
+        <title>Lista pracowników</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <div layout:fragment="content" class="container" >
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Numer identyfikacyjny</th>
+                    <th scope="col">Nazwa klienta</th>
+                    <th scope="col">Numer konta</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Rejon</th>
+                    <th scope="col">Grupa Taryfowa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="kli :${klienci}">
+                <tr>
+                    <th scope="row" th:text="${kli.nrIdentyfikacyjny}"></th>
+                    <td th:text="${kli.nazwaKlienta}"></td>
+                    <td th:text="${kli.nrKonta}"></td>
+                    <td th:text="${kli.ulica + ' ' + kli.nrDomu + ' ' + kli.kodPocztowy + ' ' + kli.miejscowosc}"></td>
+                    <td th:text="${kli.rejon.nazwaRejonu}"></td>
+                    <td th:text="${kli.grupaTaryfowa.nazwaGrupyTaryfowej}"></td>
+                </tr>
+                </th:block>
+            </tbody>
+        </table>
+         </div>
+    </body>
+</html>
