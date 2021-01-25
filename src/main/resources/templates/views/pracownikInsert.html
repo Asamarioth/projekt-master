@@ -8,7 +8,7 @@
     </head>
     <body>
         <div layout:fragment="content" class="container" >
-            <div class="simple-login-container  col-md-4 offset-md-4">
+            <div class="simple-login-container  col-md-4 offset-md-4 bg-light">
                 <h2>Dodaj pracownika</h2>
                 <form th:action="@{/pracownik_insert}" th:object="${pracownik}" method="post">
                     <div class="row">
@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             Nazwisko:
-                            <input type="text" placeholder="Nazwisko"  id="nazwisko" class="form-control" th:field="*{nazwisko}" required  pattern ="[A-Z\p{L}]{1}[a-z\p{L}]{2,19}/u">
+                            <input type="text" placeholder="Nazwisko"  id="nazwisko" class="form-control" th:field="*{nazwisko}" required  pattern ="[A-Z\p{L}]{1}[a-z\p{L}]{2,19}">
                         </div>
                     </div>
                     <div class="row">

@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/register", "/login").permitAll()
                 .antMatchers("/node_modules/**").permitAll()
+                .antMatchers("/img/**").permitAll()
                 .antMatchers("/**").hasAnyRole("MEMBER, ADMIN")
                 .and().formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/").and().logout().logoutSuccessUrl("/login");

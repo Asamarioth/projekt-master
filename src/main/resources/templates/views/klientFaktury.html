@@ -1,12 +1,13 @@
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
       layout:decorate="~{shared/main_layout}">
     <head>
-        <title>Lista pracowników</title>
+        <title>Faktury klienta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
          <div layout:fragment="content" class="container" >
+             <h3 th:text="'Klient: ' + ${klient.nrIdentyfikacyjny}" class='text-dark'></h3>
         <table class="table table-hover bg-light">
             <thead>
                 <tr>
@@ -17,8 +18,6 @@
                     <th scope="col">Termin płatności</th>
                     <th scope="col">Czy Zapłacone</th>
                     <th scope="col">Data płatności</th>
-                    <th scope="col">Klient</th>
-                    <th scope="col">Pracownik</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,13 +25,11 @@
                 <tr>
                     <th scope="row" ><a th:href="@{/faktura_modify(id=${fak.idFaktury})}" th:text="${fak.nrFaktury}" class="text-decoration-none text-dark"></a></th>
                     <td th:text="${fak.iloscPaliwa}"></td>
-                    <td ><a th:href="@{/faktura_details(id=${fak.idFaktury})}" th:text="${fak.naleznosc}" class="text-decoration-none text-dark"></a></td>
+                    <td th:text="${fak.naleznosc}"></td>
                     <td th:text="${fak.dataWystawienia}"></td>
                     <td th:text="${fak.terminPlatnosci}"></td>
                     <td th:text="${fak.czyZaplacone == true} ? 'Tak' : 'Nie'"></td>                 
                     <td th:text="${fak.dataPlatnosci}"></td>
-                    <td th:text="${fak.klient.nazwaKlienta}"></td>
-                    <td th:text="${fak.pracownik.imie + ' ' + fak.pracownik.nazwisko}"></td>
                 </tr>
                 </th:block>
             </tbody>

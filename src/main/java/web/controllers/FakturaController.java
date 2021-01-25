@@ -36,9 +36,9 @@ public class FakturaController {
     }
 
     @PostMapping("/faktura_insert")
-    public String insertKlient(Model model, @Valid @ModelAttribute("faktura") Faktura faktura) {
+    public String insertFaktura(Model model, @Valid @ModelAttribute("faktura") Faktura faktura) {
         fakturaRepository.save(faktura);
-        return "redirect:/";
+        return "redirect:/faktury_print";
     }
 
     @GetMapping("/faktury_print")
@@ -59,8 +59,13 @@ public class FakturaController {
     public String modifyfaktura(Model model, @Valid @ModelAttribute("faktura") Faktura faktura) {
         fakturaRepository.save(faktura);
 
-        return "redirect:/";
+        return "redirect:/faktury_print";
+    }
 
+    @GetMapping("/faktura_details")
+    public String detailsFaktura(Model model, int id) {
+        model.addAttribute("faktura", fakturaRepository.getOne(id));
+        return "views/fakturaDetails";
     }
 
 }

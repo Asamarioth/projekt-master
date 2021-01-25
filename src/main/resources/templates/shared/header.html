@@ -12,27 +12,46 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">Wypisywanie</a>
+                       aria-expanded="false">Klienci</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="klienci_print">Klienci</a>
-                        <a class="dropdown-item" href="pracownicy_print">Pracownicy</a>
-                        <a class="dropdown-item" href="faktury_print">Faktury</a>
-                        <a class="dropdown-item" href="grupyTaryfowe_print">Grupy Taryfowe</a>
-                        <a class="dropdown-item" href="rejony_print">Rejony</a>
+                        <a class="dropdown-item" href="klienci_print">Lista</a>
+                        <a class="dropdown-item" href="klient_insert">Wprowadzanie</a>
                     </div>
                 </li>
-				<li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">Wprowadzanie</a>
+                       aria-expanded="false">Pracownicy</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="klient_insert">Klienci</a>
-                        <a class="dropdown-item" href="pracownik_insert">Pracownicy</a>
-                        <a class="dropdown-item" href="faktura_insert">Faktury</a>
-                        <a class="dropdown-item" href="grupaTaryfowa_insert">Grupy Taryfowe</a>
-                        <a class="dropdown-item" href="rejon_insert">Rejony</a>
+                        <a class="dropdown-item" href="pracownicy_print">Lista</a>
+                        <a class="dropdown-item" href="pracownik_insert">Wprowadzanie</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">Faktury</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="faktury_print">Lista</a>
+                       <a class="dropdown-item" href="faktura_insert">Wprowadzanie</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">Grupy taryfowe</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="grupyTaryfowe_print">Lista</a>
+                        <a class="dropdown-item" href="grupaTaryfowa_insert">Wprowadzanie</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">Rejony</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="rejony_print">Lista</a>
+                        <a class="dropdown-item" href="rejon_insert">Wprowadzanie</a>
                     </div>
                 </li>
             </ul>
+             <a sec:authorize="isAuthenticated()" class="btn btn-lg btn-primary float-right" href="/logout" role="button">Wyloguj &raquo;</a>
         </div>
     </nav>
 </header>

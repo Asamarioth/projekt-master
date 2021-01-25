@@ -8,7 +8,7 @@
     </head>
     <body>
         <div layout:fragment="content" class="container" >
-            <div class="simple-login-container  col-md-4 offset-md-4">
+            <div class="simple-login-container  col-md-4 offset-md-4 bg-light">
                 <h2>Dodaj faktura</h2>
                 <form th:action="@{/faktura_modify}" th:object="${faktura}" method="post">
                     <input type="hidden" th:field="*{idFaktury}" />
@@ -36,37 +36,52 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             Data wystawienia:
-                            <input type="date"   id="ulica" class="form-control" th:field="*{dataWystawienia}" required>
+                            <input type="date"    class="form-control" th:field="*{dataWystawienia}" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
                             Termin Płatności:
-                             <input type="date"   id="ulica" class="form-control" th:field="*{terminPlatnosci}" required>
+                            <input type="date"   class="form-control" th:field="*{terminPlatnosci}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Czy zapłacone:
+                            <input type="checkbox" th:field="*{czyZaplacone}" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 form-group">
-							Klient:
-							<select th:field"*{klient}" required id="rejon" name="klient">
-							<th:block th:each="kli :${klienci}">
-								<option th:text="${kli.nazwaKlienta}" th:value="${kli.idKlienta}"></option>
-								</th:block> 
-							</select>
+                            Data płatności:
+                            <input type="date"   class="form-control" th:field="*{dataPlatnosci}" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Klient:
+                            <select th:field"*{klient}" required id="rejon" name="klient">
+                                <th:block th:each="kli :${klienci}">
+                                    <option th:if="${kli.idKlienta} == *{klient.idKlienta}"  th:text="${kli.nazwaKlienta}" th:value="${kli.idKlienta}" selected ></option>
+                                    <option th:unless="${kli.idKlienta} == *{klient.idKlienta}"  th:text="${kli.nazwaKlienta}" th:value="${kli.idKlienta}"></option>
+                                </th:block> 
+                            </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-							Pracownik:
-							<select  th:field"*{pracownik}" id="grupaTaryfowa" name="pracownik">
-							<th:block th:each="pra :${pracownicy}">
-								<option th:text="${pra.imie + ' ' + pra.nazwisko}" th:value="${pra.idPracownika}"></option>
-								</th:block> 
-							</select>
+                            Pracownik:
+                            <select  name="pracownik">
+                                <th:block th:each="pra :${pracownicy}">
+                                    <option th:if="${pra.idPracownika} == *{pracownik.idPracownika}" th:text="${pra.imie + ' ' + pra.nazwisko}" th:value="${pra.idPracownika}" selected></option>
+                                    <option th:unless="${pra.idPracownika} == *{pracownik.idPracownika}" th:text="${pra.imie + ' ' + pra.nazwisko}" th:value="${pra.idPracownika}"></option>
+                                </th:block> 
+                            </select>
                         </div>
                     </div>
-								
+
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <input type="submit" class="btn btn-primary btn-block btn-login">

@@ -9,7 +9,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="../../node_modules/bootstrap/dist/css/style.css" rel="stylesheet" crossorigin="anonymous">
 </head>
-<body>
+<body style="    background: url('../../img/background.jpg') no-repeat center center;
+    background-size: cover;">
 
 <div sec:authorize="isAuthenticated()" th:replace="shared/header :: header">
     <!-- tu będzie header.html-->
@@ -19,7 +20,7 @@
     <!-- tu będzie zawartość danej podstrony-->
 </div>
 
-<div th:replace="shared/footer :: footer">
+<div sec:authorize="isAuthenticated()" th:replace="shared/footer :: footer">
     <!-- tu będzie footer.html-->
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

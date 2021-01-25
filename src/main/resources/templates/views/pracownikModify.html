@@ -4,17 +4,17 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Dodawanie grup taryfowych</title>
+        <title>Dodawanie pracownika</title>
     </head>
     <body>
         <div layout:fragment="content" class="container" >
             <div class="simple-login-container  col-md-4 offset-md-4 bg-light">
-                <h2>Dodaj grupę taryfową</h2>
-                <form th:action="@{/grupaTaryfowa_insert}" th:object="${grupaTaryfowa}" method="post">
+                <h2>Dodaj pracownika</h2>
+                <form th:action="@{/pracownik_modify}" th:object="${pracownik}" method="post">
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            Nazwa grupy taryfowej:
-                            <input type="text" class="form-control" placeholder="Nazwa grupy taryfowej" id="name" th:field="*{nazwaGrupyTaryfowej}" required>
+                            Imię:
+                            <input type="text" class="form-control" placeholder="Imię" id="name" th:field="*{imie}" required  pattern ="[A-Z\p{L}]{1}[a-z\p{L}]{2,19}">
                         </div>
                     </div>
                     <div class="row">
@@ -22,8 +22,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            Stawka Taryfowa:
-                            <input type="number" id="stawkaTaryfowa" class="form-control" th:field="*{stawkaTaryfowa}" required min="1" step="0.01">
+                            Nazwisko:
+                            <input type="text" placeholder="Nazwisko"  id="nazwisko" class="form-control" th:field="*{nazwisko}" required  pattern ="[A-Z\p{L}]{1}[a-z\p{L}]{2,19}">
                         </div>
                     </div>
                     <div class="row">

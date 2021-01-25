@@ -25,13 +25,27 @@ public class PracownikController {
     @PostMapping("/pracownik_insert")
     public String insertPracownik(Model model, @Valid @ModelAttribute("pracownik") Pracownik pracownik) {
         pracownikRepository.save(pracownik);
-        return "redirect:/";
+        return "redirect:/pracownicy_print";
     }
     
     @GetMapping("pracownicy_print")
     public String printPracownik(Model model) {
         model.addAttribute("pracownicy", pracownikRepository.findAll());
         return "views/pracownikPrint";
+    }
+    
+    @GetMapping("pracownik_modify")
+    public String modifyPracownik(Model model, int id) {
+        model.addAttribute("pracownik", pracownikRepository.getOne(id));
+        return "views/pracownikModify";
+    }
+
+    @PostMapping("pracownik_modify")
+    public String modifyPracownik(Model model, @Valid @ModelAttribute("pracownik") Pracownik pracownik) {
+        pracownikRepository.save(pracownik);
+
+        return "redirect:/pracownicy_print";
+
     }
 
 }

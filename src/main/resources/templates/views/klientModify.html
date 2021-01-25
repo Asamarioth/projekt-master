@@ -4,13 +4,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Dodawanie klienta</title>
+        <title>Modyfikacja </title>
     </head>
     <body>
         <div layout:fragment="content" class="container" >
             <div class="simple-login-container  col-md-4 offset-md-4 bg-light">
-                <h2>Dodaj klienta</h2>
-                <form th:action="@{/klient_insert}" th:object="${klient}" method="post">
+                <h2>Modyfikuj klienta</h2>
+                <form th:action="@{/klient_modify}" th:object="${klient}" method="post">
+                    <input type="hidden" th:field="*{idKlienta}" />
                     <div class="row">
                         <div class="col-md-12 form-group">
                             Nazwa klienta:
@@ -59,9 +60,12 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
 							Rejon:
-							<select th:field"*{rejon}" required id="rejon" name="rejon">
+							<select required id="rejon" name="rejon">
 							<th:block th:each="rej :${rejony}">
-								<option th:text="${rej.nazwaRejonu}" th:value="${rej.idRejonu}"></option>
+                                                            
+								<option th:if="${rej.idRejonu} == *{rejon.idRejonu} "   th:text="${rej.nazwaRejonu}" th:value="${rej.idRejonu}" selected >
+                                                                <option  th:unless="${rej.idRejonu} == *{rejon.idRejonu}"th:text="${rej.nazwaRejonu}" th:value="${rej.idRejonu}" >   
+</option>
 								</th:block> 
 							</select>
                         </div>
@@ -69,9 +73,10 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
 							Grupa Taryfowa:
-							<select  th:field"*{grupaTaryfowa}" id="grupaTaryfowa" name="grupaTaryfowa">
+							<select id="grupaTaryfowa" required name="grupaTaryfowa">
 							<th:block th:each="tar :${taryfy}">
-								<option th:text="${tar.nazwaGrupyTaryfowej}" th:value="${tar.idGrupyTaryfowej}"></option>
+                                                            <option th:if="${tar.idGrupyTaryfowej} == *{grupaTaryfowa.idGrupyTaryfowej}" th:text="${tar.nazwaGrupyTaryfowej}" th:value="${tar.idGrupyTaryfowej}" selected></option>
+								<option th:unless="${tar.idGrupyTaryfowej} == *{grupaTaryfowa.idGrupyTaryfowej}" th:text="${tar.nazwaGrupyTaryfowej}" th:value="${tar.idGrupyTaryfowej}"></option>
 								</th:block> 
 							</select>
                         </div>

@@ -7,7 +7,7 @@
     </head>
     <body>
          <div layout:fragment="content" class="container" >
-        <table class="table table-hover">
+        <table class="table table-hover bg-light">
             <thead>
                 <tr>
                     <th scope="col">Numer identyfikacyjny</th>
@@ -21,8 +21,8 @@
             <tbody>
                 <th:block th:each="kli :${klienci}">
                 <tr>
-                    <th scope="row" th:text="${kli.nrIdentyfikacyjny}"></th>
-                    <td th:text="${kli.nazwaKlienta}"></td>
+                    <th scope="row" ><a th:href="@{/klient_modify(id=${kli.idKlienta})}" th:text="${kli.nrIdentyfikacyjny}" class="text-decoration-none text-dark"></a></th>
+                    <td ><a th:href="@{/klient_faktury(id=${kli.idKlienta})}" th:text="${kli.nazwaKlienta}" class="text-decoration-none text-dark"></a></td>
                     <td th:text="${kli.nrKonta}"></td>
                     <td th:text="${kli.ulica + ' ' + kli.nrDomu + ' ' + kli.kodPocztowy + ' ' + kli.miejscowosc}"></td>
                     <td th:text="${kli.rejon.nazwaRejonu}"></td>

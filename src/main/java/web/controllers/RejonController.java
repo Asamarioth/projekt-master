@@ -27,7 +27,7 @@ public class RejonController {
     @PostMapping("/rejon_insert")
     public String insertRejon(Model model, @Valid @ModelAttribute("rejon") Rejon rejon) {
         rejonRepository.save(rejon);
-        return "redirect:/";
+        return "redirect:/rejony_print";
     }
 
     @GetMapping("rejony_print")
@@ -46,7 +46,7 @@ public class RejonController {
     public String modifyRejon(Model model, @Valid @ModelAttribute("rejon") Rejon rejon) {
         rejonRepository.save(rejon);
         
-        return "redirect:/";
+        return "redirect:/rejony_print";
                 
     }
 

@@ -26,7 +26,7 @@ public class GrupaTaryfowaController {
     @PostMapping("/grupaTaryfowa_insert")
     public String insertGrupaTaryfowa(Model model, @Valid @ModelAttribute("grupaTaryfowa") GrupaTaryfowa grupaTaryfowa) {
         grupaTaryfowaRepository.save(grupaTaryfowa);
-        return "redirect:/";
+        return "redirect:/grupyTaryfowe_print";
     }
 
     @GetMapping("grupyTaryfowe_print")
@@ -45,7 +45,7 @@ public class GrupaTaryfowaController {
     public String modifyGrupaTaryfowa(Model model, @Valid @ModelAttribute("grupaTaryfowa") GrupaTaryfowa grupaTaryfowa) {
         grupaTaryfowaRepository.save(grupaTaryfowa);
 
-        return "redirect:/";
+        return "redirect:/grupyTaryfowe_print";
 
     }
 
