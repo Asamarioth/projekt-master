@@ -8,6 +8,7 @@
     <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="../../node_modules/bootstrap/dist/css/style.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6a38ddb31c.js" crossorigin="anonymous"></script>
 </head>
 <body style="    background: url('../../img/background.jpg') no-repeat center center;
     background-size: cover;">
@@ -20,9 +21,7 @@
     <!-- tu będzie zawartość danej podstrony-->
 </div>
 
-<div sec:authorize="isAuthenticated()" th:replace="shared/footer :: footer">
-    <!-- tu będzie footer.html-->
-</div>
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
