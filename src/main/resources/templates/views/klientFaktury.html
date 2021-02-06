@@ -8,7 +8,8 @@
     <body>
          <div layout:fragment="content" class="container" >
              <h3 th:text="'Klient: ' + ${klient.nrIdentyfikacyjny}" class='text-dark'></h3>
-        <table class="table table-hover bg-light">
+             <div th:if="${errorMsg}" class="jumbotron"> <h1>Klient nie posiada wystawionych faktur</h1></div>  
+        <table th:if="!${errorMsg}" class="table table-hover bg-light">
             <thead>
                 <tr>
                     <th scope="col">Numer faktury</th>

@@ -10,12 +10,60 @@
 <body>
 <div layout:fragment="content" class="container" >
     <main role="main" class="container">
-        <div class="jumbotron " style='background-color: #a8dadc!important;'>
-            <h1>Strona główna</h1>
-            <p class="lead">Strona główna aplikacji</p>
-            <a sec:authorize="!isAuthenticated()" class="btn btn-lg btn-primary" href="/register" role="button">Rejestracja &raquo;</a>
-            <a sec:authorize="!isAuthenticated()" class="btn btn-lg btn-primary" href="/login" role="button">Logowanie &raquo;</a>
-            <a sec:authorize="isAuthenticated()" class="btn btn-lg btn-primary" href="/logout" role="button">Wyloguj &raquo;</a>
+        <div class="jumbotron " style='background-color: rgba(240,240,240,0.75)!important;'>
+
+        <div class = "row">
+            <div class = "col-md-6 col-lg-4 col-xl-3 " style="text-align: center">
+                <figure>
+                    <a href="/klienci_print"><i class="fas fa-users fa-8x" style="color:#5CD6C8" alt="Klienci"></i></a>
+                    <figcaption style="align:center">Lista klientów</figcaption>
+                </figure>
+            </div>
+
+
+            <div class = "col-md-6 col-lg-4 col-xl-3 " style="text-align: center">
+                <figure>
+                    <a href="/faktury_print"><i class="far fa-file-alt fa-8x" alt="Faktury" style="color:#62B5D0"></i></a>
+                    <figcaption>Lista faktur</figcaption>
+                </figure>
+            </div>
+
+            <div class = "col-md-6 col-lg-4 col-xl-3 " style="text-align: center">
+                <figure>
+                    <a href="/faktura_insert"><i class="fas fa-plus-square fa-8x" alt="Dodawanie faktur" style="color:#6090BE"></i></a>
+                    <figcaption>Dodaj fakturę</figcaption>
+                </figure>
+
+        </div>
+            <hr width="100%">
+    </div>
+            <div class ="row" style="text-align: center">              
+                <h1>Statystyki:</h1>            
+            </div>
+
+            <div class ="row" style="text-align: center">              
+                <h4>Liczba klientów: <th:block th:text="${klientCount}" /></h4>            
+            </div>
+            <div class ="row" style="text-align: center">              
+                <h4>Liczba pracowników: <th:block th:text="${pracownikCount}" /></h4>            
+            </div>
+
+            <div class ="row" style="text-align: center">              
+                <h4>Ilość wystawionych faktur: <th:block th:text="${fakturaCount}" /></h4>            
+            </div>
+
+            <div class ="row" style="text-align: center">              
+                <h4>Średnia wartość faktury: <th:block th:text="${fakturaAvg} + ' PLN'" /></h4>            
+            </div>
+            
+            <div class ="row" style="text-align: center">              
+                <h4>Ilość sprzedanego paliwa: <th:block th:text="${paliwoSum} + ' m^3'" /></h4>            
+            </div>
+
+
+            
+            
+                </div>
         </div>
     </main>
 </div>

@@ -17,6 +17,11 @@ public interface FakturaRepository extends JpaRepository<Faktura, Integer> {
    @Query(value="SELECT * FROM faktury f WHERE id_pracownika=:id", nativeQuery=true)
    List<Faktura> findAllByIdPracownika(@Param("id") int id);
    
+   @Query(value="SELECT AVG(naleznosc) FROM faktury f", nativeQuery=true)
+   Double naleznoscAVg();
+   
+   @Query(value="SELECT SUM(ilosc_Paliwa) FROM faktury f", nativeQuery=true)
+   Double paliwoSum();
    
     
     

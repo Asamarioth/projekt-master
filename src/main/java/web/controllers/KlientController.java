@@ -15,6 +15,7 @@ import web.repositories.GrupaTaryfowaRepository;
 import web.repositories.FakturaRepository;
 import web.repositories.RejonRepository;
 import web.entities.Klient;
+import web.entities.Faktura;
 import web.entities.Rejon;
 import web.entities.GrupaTaryfowa;
 
@@ -67,7 +68,13 @@ public class KlientController {
     
     @GetMapping("klient_faktury")
     public String fakturyKlient(Model model, @RequestParam int id) {
-    model.addAttribute("faktury", fakturaRepository.findAllByIdKlienta(id));
+    List<Faktura> faktury = fakturaRepository.findAllByIdKlienta(id);
+    if(faktury.isEmpty()){
+        model.addAttribute("errorMsg", true);
+    }
+    else {
+        model.addAttribute("faktury", faktury);
+    }
      model.addAttribute("klient", klientRepository.getOne(id));
     
     return "views/klientFaktury";

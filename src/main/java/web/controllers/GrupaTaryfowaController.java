@@ -19,33 +19,52 @@ public class GrupaTaryfowaController {
 
     @GetMapping("/grupaTaryfowa_insert")
     public String insertGrupaTaryfowa(Model model) {
-        model.addAttribute(new GrupaTaryfowa());
-        return "views/grupaTaryfowaInsert";
+        try {
+            model.addAttribute(new GrupaTaryfowa());
+            return "views/grupaTaryfowaInsert";
+        } catch (Exception e) {
+            return "views/errorPage";
+        }
     }
 
     @PostMapping("/grupaTaryfowa_insert")
     public String insertGrupaTaryfowa(Model model, @Valid @ModelAttribute("grupaTaryfowa") GrupaTaryfowa grupaTaryfowa) {
-        grupaTaryfowaRepository.save(grupaTaryfowa);
-        return "redirect:/grupyTaryfowe_print";
+        try {
+            grupaTaryfowaRepository.save(grupaTaryfowa);
+            return "redirect:/grupyTaryfowe_print";
+        } catch (Exception e) {
+            return "views/errorPage";
+        }
     }
 
     @GetMapping("grupyTaryfowe_print")
     public String printGrupyTaryfowe(Model model) {
-        model.addAttribute("taryfy", grupaTaryfowaRepository.findAll());
-        return "views/grupaTaryfowaPrint";
+        try {
+            model.addAttribute("taryfy", grupaTaryfowaRepository.findAll());
+            return "views/grupaTaryfowaPrint";
+        } catch (Exception e) {
+            return "views/errorPage";
+        }
     }
 
     @GetMapping("grupaTaryfowa_modify")
     public String modifyGrupaTaryfowa(Model model, int id) {
-        model.addAttribute("grupaTaryfowa", grupaTaryfowaRepository.getOne(id));
-        return "views/grupaTaryfowaModify";
+        try {
+            model.addAttribute("grupaTaryfowa", grupaTaryfowaRepository.getOne(id));
+            return "views/grupaTaryfowaModify";
+        } catch (Exception e) {
+            return "views/errorPage";
+        }
     }
 
     @PostMapping("grupaTaryfowa_modify")
     public String modifyGrupaTaryfowa(Model model, @Valid @ModelAttribute("grupaTaryfowa") GrupaTaryfowa grupaTaryfowa) {
-        grupaTaryfowaRepository.save(grupaTaryfowa);
-
-        return "redirect:/grupyTaryfowe_print";
+        try {
+            grupaTaryfowaRepository.save(grupaTaryfowa);
+            return "redirect:/grupyTaryfowe_print";
+        } catch (Exception e) {
+            return "views/errorPage";
+        }
 
     }
 
