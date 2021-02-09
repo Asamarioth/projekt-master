@@ -1,6 +1,7 @@
 
 package web.repositories;
 
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,6 +23,7 @@ public interface FakturaRepository extends JpaRepository<Faktura, Integer> {
    
    @Query(value="SELECT SUM(ilosc_Paliwa) FROM faktury f", nativeQuery=true)
    Double paliwoSum();
+   
    
     
     

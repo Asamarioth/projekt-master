@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
 import web.repositories.KlientRepository;
 import web.repositories.PracownikRepository;
+import web.repositories.GrupaTaryfowaRepository;
 import web.repositories.RejonRepository;
 import web.entities.Klient;
 import web.entities.Faktura;
@@ -28,6 +29,10 @@ public class FakturaController {
     PracownikRepository pracownikRepository;
     @Autowired
     FakturaRepository fakturaRepository;
+    @Autowired
+    RejonRepository rejonRepository;
+    @Autowired
+    GrupaTaryfowaRepository grupaTaryfowaRepository;
 
     @GetMapping("/faktura_insert")
     public String insertFaktura(Model model) {
@@ -84,6 +89,8 @@ public class FakturaController {
     public String detailsFaktura(Model model, int id) {
         try {
             model.addAttribute("faktura", fakturaRepository.getOne(id));
+            model.addAttribute("rejon", rejonRepository.findRejonByFakturaID(id));
+            model.addAttribute("grupaTaryfowa",grupaTaryfowaRepository.findGrupaTaryfowaByFakturaID(id));
             return "views/fakturaDetails";
         } catch (Exception e) {
             return "views/errorPage";

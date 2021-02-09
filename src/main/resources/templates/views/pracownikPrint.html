@@ -18,9 +18,11 @@
             <tbody>
                 <th:block th:each="pra :${pracownicy}">
                 <tr>
-                    <th scope="row"><a th:href="@{/pracownik_modify(id=${pra.idPracownika})}" th:text="${pra.idPracownika}" class="text-decoration-none text-dark"></a></th>
+                    <th scope="row" th:text="${pra.idPracownika}"></th>
                     <td th:text="${pra.imie}"></td>
                     <td th:text="${pra.nazwisko}"></td>
+                    <td ><a th:href="@{/pracownik_modify(id=${pra.idPracownika})}" th:text="Edytuj" class="btn btn-primary"></a>
+                    <a th:href="@{/pracownik_faktury(id=${pra.idPracownika})}" th:text="Faktury" class="btn btn-primary"></a></td>
                 </tr>
                 </th:block>
             </tbody>

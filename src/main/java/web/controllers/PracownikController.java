@@ -8,14 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import web.entities.Faktura;
 import web.repositories.PracownikRepository;
 import web.entities.Pracownik;
+import web.repositories.FakturaRepository;
 
 @Controller
 public class PracownikController {
 
     @Autowired
     PracownikRepository pracownikRepository;
+    @Autowired
+    FakturaRepository fakturaRepository;
 
     @GetMapping("/pracownik_insert")
     public String insertPracownik(Model model) {
@@ -47,5 +52,18 @@ public class PracownikController {
         return "redirect:/pracownicy_print";
 
     }
+    @GetMapping("pracownik_faktury")
+    public String fakturyPracownik(Model model, @RequestParam int id) {
+    List<Faktura> faktury = fakturaRepository.findAllByIdPracownika(id);
+    if(faktury.isEmpty()){
+        model.addAttribute("errorMsg", true);
+    }
+    else {
+        model.addAttribute("faktury", faktury);
+    }
+     model.addAttribute("pracownik", pracownikRepository.getOne(id));
+    
+    return "views/pracownikFaktury";
+}
 
 }

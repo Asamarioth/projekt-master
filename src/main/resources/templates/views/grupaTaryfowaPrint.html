@@ -1,7 +1,7 @@
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
       layout:decorate="~{shared/main_layout}">
     <head>
-        <title>Lista pracowników</title>
+        <title>Lista grup taryfowych</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -19,8 +19,9 @@
                 <th:block th:each="tar :${taryfy}">
                 <tr>
                     <th scope="row" th:text="${tar.idGrupyTaryfowej}"></th>
-                    <td > <a th:href="@{/grupaTaryfowa_modify(id=${tar.idGrupyTaryfowej})}" th:text="${tar.nazwaGrupyTaryfowej}" class="text-decoration-none text-dark"></a></td>
+                    <td th:text="${tar.nazwaGrupyTaryfowej}"></td>
                     <td th:text="${tar.stawkaTaryfowa}"></td>
+                    <td><a th:href="@{/grupaTaryfowa_modify(id=${tar.idGrupyTaryfowej})}" th:text="Edytuj" class="btn btn-primary"></a></td>
                 </tr>
                 </th:block>
             </tbody>

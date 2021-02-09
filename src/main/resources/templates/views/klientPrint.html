@@ -1,7 +1,7 @@
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
       layout:decorate="~{shared/main_layout}">
     <head>
-        <title>Lista pracowników</title>
+        <title>Lista klientów</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -21,12 +21,14 @@
             <tbody>
                 <th:block th:each="kli :${klienci}">
                 <tr>
-                    <th scope="row" ><a th:href="@{/klient_modify(id=${kli.idKlienta})}" th:text="${kli.nrIdentyfikacyjny}" class="text-decoration-none text-dark"></a></th>
-                    <td ><a th:href="@{/klient_faktury(id=${kli.idKlienta})}" th:text="${kli.nazwaKlienta}" class="text-decoration-none text-dark"></a></td>
+                    <th scope="row" th:text="${kli.nrIdentyfikacyjny}"></th>
+                    <td th:text="${kli.nazwaKlienta}"></td>
                     <td th:text="${kli.nrKonta}"></td>
                     <td th:text="${kli.ulica + ' ' + kli.nrDomu + ' ' + kli.kodPocztowy + ' ' + kli.miejscowosc}"></td>
                     <td th:text="${kli.rejon.nazwaRejonu}"></td>
                     <td th:text="${kli.grupaTaryfowa.nazwaGrupyTaryfowej}"></td>
+                    <td><a th:href="@{/klient_modify(id=${kli.idKlienta})}" th:text="Edytuj" class="btn btn-primary"></a></td>
+                    <td ><a th:href="@{/klient_faktury(id=${kli.idKlienta})}" th:text="Faktury" class="btn btn-primary"></a></td>
                 </tr>
                 </th:block>
             </tbody>

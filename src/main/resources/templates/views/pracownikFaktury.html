@@ -1,13 +1,15 @@
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.springframework.org/schema/data/jaxb"
       layout:decorate="~{shared/main_layout}">
     <head>
-        <title>Lista faktur</title>
+        <title>Faktury klienta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
          <div layout:fragment="content" class="container" >
-        <table class="table table-hover bg-light">
+             <h3 th:text="'Pracownik: ' + ${pracownik.imie} + ' ' + ${pracownik.nazwisko}" class='text-dark'></h3>
+             <div th:if="${errorMsg}" class="jumbotron"> <h1>Pracownik nie obsługuje żadnych faktur</h1></div>  
+        <table th:if="!${errorMsg}" class="table table-hover bg-light">
             <thead>
                 <tr>
                     <th scope="col">Numer faktury</th>
@@ -17,24 +19,18 @@
                     <th scope="col">Termin płatności</th>
                     <th scope="col">Czy Zapłacone</th>
                     <th scope="col">Data płatności</th>
-                    <th scope="col">Klient</th>
-                    <th scope="col">Pracownik</th>
                 </tr>
             </thead>
             <tbody>
                 <th:block th:each="fak :${faktury}">
                 <tr>
-                    <th scope="row"  th:text="${fak.nrFaktury}" ></th>
+                    <th scope="row" ><a th:href="@{/faktura_modify(id=${fak.idFaktury})}" th:text="${fak.nrFaktury}" class="text-decoration-none text-dark"></a></th>
                     <td th:text="${fak.iloscPaliwa}"></td>
-                    <td  th:text="${fak.naleznosc}"></td>
+                    <td th:text="${fak.naleznosc}"></td>
                     <td th:text="${fak.dataWystawienia}"></td>
                     <td th:text="${fak.terminPlatnosci}"></td>
                     <td th:text="${fak.czyZaplacone == true} ? 'Tak' : 'Nie'"></td>                 
                     <td th:text="${fak.dataPlatnosci}"></td>
-                    <td th:text="${fak.klient.nazwaKlienta}"></td>
-                    <td th:text="${fak.pracownik.imie + ' ' + fak.pracownik.nazwisko}"></td>
-                    <td><a th:href="@{/faktura_modify(id=${fak.idFaktury})}" th:text="Edytuj" class="btn btn-primary"></a></td>
-                    <td><a th:href="@{/faktura_details(id=${fak.idFaktury})}" th:text="Szczegóły" class="btn btn-primary"></a></td>
                 </tr>
                 </th:block>
             </tbody>
